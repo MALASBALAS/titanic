@@ -1,7 +1,7 @@
 package com.alvaroyraul;
 
 // Servicio de Emergencias: invoca Botes, recibe datos y los muestra
-public class ServiciosEmergencia {
+public class ServicioEmergencia{
 	public static void main(String[] args) {
 
 		int maxpersonas = 0;
@@ -11,8 +11,8 @@ public class ServiciosEmergencia {
 
 		System.out.println("Iniciando servicio de emergencias. Generando datos de botes...");
 
-		for (int i = 0; i < Botes.TOTALBOTES; i++) {
-			Botes bote = Botes.cargarBote(i);
+		for (int i = 0; i < Bote.TOTALBOTES; i++) {
+			Bote bote = Bote.cargarBote(i);
 			// usar toString generado por Lombok @Data
 			System.out.println(bote);
 			// contar totales

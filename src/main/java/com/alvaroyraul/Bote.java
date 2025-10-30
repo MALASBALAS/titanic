@@ -1,10 +1,12 @@
 package com.alvaroyraul;
 
+import java.util.Random;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data @AllArgsConstructor
-public class Botes {
+public class Bote {
 
     //TODO: El tiempo de demora que cada bote tarda en contar a los pasajeros será aleatorio y va 
     // de los 2 a los 6 segundos . Thread.sleep(2000); //Demora un proceso 2 segundos
@@ -28,7 +30,7 @@ public class Botes {
     // Lombok generará el constructor completo con @AllArgsConstructor
 
     // Metodo para simular la carga de un único bote y devolver sus datos
-    public static Botes cargarBote(int i) {
+    public static Bote cargarBote(int i) {
         int numPersonas = (int) (Math.random() * MAXPERSONAS) + 1;
         int mujeres = (int) (Math.random() * (numPersonas + 1));
         int hombres = (int) (Math.random() * (numPersonas - mujeres + 1));
@@ -37,11 +39,13 @@ public class Botes {
         String nbote = String.format("B%02d", i);
 
         // crear el objeto Botes con los datos generados
-        Botes bote = new Botes(numPersonas, mujeres, hombres, ninios, nbote);
+        Bote bote = new Bote(numPersonas, mujeres, hombres, ninios, nbote);
 
         // opcional: simular una demora corta (no bloqueante larga)
         try {
-            Thread.sleep(50);
+            Random rand = new Random();
+            int delay = rand.nextInt(MAXSLEEP - MINSLEEP) + MINSLEEP; // valor entre MINSLEEP y MAXSLEEP inclusive
+            Thread.sleep(delay);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
