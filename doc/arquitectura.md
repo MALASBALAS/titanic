@@ -18,11 +18,20 @@ Esta sección describe la arquitectura técnica y los componentes del sistema. S
 
 ![Arquitectura general](../doc/img/Diseño_general.jpg)
 
-![Arquitectura componentes](../doc/img/Diseño_componentes.jpg)
+Aqui tenemos un dibujo de la visión más general del proyecto en la que servicios de emergencia le dice ha bote que cuente x 20 es decir por cada bote el número de hombre, mujeres, niños. Bote se le devuelve la información genera el markdown.
 
-`ServicioEmergencia` lee la salida de cada proceso, invoca el parser (`Bote.fromJson`) y agrega el resultado a la colección interna.
+![Arquitectura especializada](../doc/img/Diseño_componentes.jpg)
 
-Cuando todos los procesos han finalizado, `ServicioEmergencia` invoca `GeneradorInforme.generarInforme(...)` para persistir el Markdown con el detalle y los totales.
+En esta imagen muestro lo que contienen ambas partes del proyecto:
+
+- Dentro de bote encontramos la clase bote que contiene los atributos de la clase como son personas, hombre, mujeres, etc y un metodo que genera de forma aleatoria un numero de personas.
+- Dentro de bote hay tambien un main que ejecuta el proceso de llamar a el metodo y esperar de 2-6 segundos por cada bote y una vez terminados los 20 mandarlos a Sitemas de emergencia como se muestra en la arquitectura general.
+- En la otra caja se encuentra Sistemas de emergencia que es el main que a iniciado el programa y tiene la función de ejecutar e MainBote mediante un proceso, dentro de este también se crea el informe mediante un metodo que llamado desde otra clase.
+- La clase GenerarInforme es una clase que solo contiene el metodo que permite crear el Informe.md con la información que llega desde botes.
+
+## Protocolo de comunicación
+
+El programa se comunica de forma interna medinte llamadas directas sin ficheros ni documentos xml.
 
 ### Puntos de extensión
 

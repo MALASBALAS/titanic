@@ -16,6 +16,7 @@
   - [Cómo contribuir](#cómo-contribuir)
   - [Autores y licencia](#autores-y-licencia)
   - [Documentación técnica](#documentación-técnica)
+  - [Anexos](#anexos)
 
 ## Descripción del proyecto
 
@@ -76,4 +77,9 @@ Autores: Álvaro Balas y Raúl Sánchez
 
 ## Documentación técnica
 
-Ver `doc/index.md` para el índice de la documentación: arquitectura, plan de pruebas, problemas encontrados y conclusiones.
+Ver `doc/indice.md` para el índice de la documentación: arquitectura, plan de pruebas, problemas encontrados y conclusiones.
+
+## Anexos
+
+Github de Alvaro: [MALASBALAS_Titanic](https://github.com/MALASBALAS/titanic)
+Github de Raul: [Raulsr19_Titanic](https://github.com/Raulsr19/Titanic)

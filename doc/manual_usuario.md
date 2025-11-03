@@ -77,17 +77,6 @@ Resultados y artefactos de pruebas:
 - `target/surefire-reports` — resultados de los tests (XML/texto).
 - `Informe.md` — generado al ejecutar el orquestador desde la aplicación.
 
-## Errores comunes y solución rápida
-
-- Clase no encontrada / NoClassDefFoundError: asegúrate de haber ejecutado `mvn package` y de usar el classpath `target/classes`.
-- Versión de Java incompatible: usa una JDK ≥ 8 (preferiblemente 17). Revisa `java -version`.
-- Permisos de escritura: si no se crea `Informe.md`, comprueba permisos en el directorio de trabajo.
-
-## Notas para CI / entrega
-
-- Incluye `doc/` y `Informe.md` en el paquete de entrega.
-- Archive `target/surefire-reports` junto con `Informe.md` como evidencia de ejecución de tests.
-
 ## Contacto
 
-Para dudas sobre el uso o para reportar un bug, abre un issue o contacta a los autores listados en `README.md`.
+Para dudas sobre el uso o para reportar un bug, abre un issue o contacte con nosotros.

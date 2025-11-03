@@ -28,5 +28,4 @@ pom.xml.next
 target/surefire-reports/
 target/failsafe-reports/
 
-# Optional: excluir Informe.md de commits si prefieres que se regenere en CI
-# Informe.md
+Informe.md
