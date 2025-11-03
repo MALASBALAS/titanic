@@ -1,7 +1,7 @@
 
 # Titanic — simulador de orquestación de botes (Java)
 
-![Build](https://img.shields.io/badge/build-passing-brightgreen) ![Java](https://img.shields.io/badge/java-17-blue)
+![Java](https://img.shields.io/badge/java-17-blue)
 
 ## Índice
 
