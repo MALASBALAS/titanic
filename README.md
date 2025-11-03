@@ -74,8 +74,6 @@ Al finalizar la ejecución se genera `Informe.md` en la raíz del proyecto con e
 
 Autores: Álvaro Balas y Raúl Sánchez
 
-Licencia: (indicar si aplica)
-
 ## Documentación técnica
 
 Ver `doc/index.md` para el índice de la documentación: arquitectura, plan de pruebas, problemas encontrados y conclusiones.
