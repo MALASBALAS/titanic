@@ -48,7 +48,7 @@ public class ServicioEmergencia {
 		public static final String PNUM ="\"(personas|mujeres|hombres|ninios)\"\\s*:\\s*(\\d+)";
 		public static final String PERSONAS ="personas";
 		public static final String MUJERES ="mujeres";
-		public static final String NINIOS = "ninios";
+		public static final String NINIOS = "niños";
 		public static final String HOMBRES ="hombres";
 		public static final String ALVAROYRAUL = "com.alvaroyraul.MainBote";
 		public static final String CP =  "-cp";
