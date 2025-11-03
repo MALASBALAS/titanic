@@ -66,20 +66,10 @@ public class ServicioEmergencia {
 		String javaBin = System.getProperty(JAVA_HOME) + File.separator + BIN + File.separator + JAVA;
 		String classpath = System.getProperty(JCP);
 
-		// Lanzar todos los procesos hijos (paralelismo real)
-		List<Process> procesos = new ArrayList<>();
+		// Ejecutar los procesos uno a uno: lanzar, leer salida y esperar al proceso.
 		for (int i = 0; i < total; i++) {
 			try {
-				procesos.add(startChildProcess(javaBin, classpath, i));
-			} catch (IOException e) {
-				System.err.println(ARRANCAR_NO+ i + DOS_PUNTOS + e.getMessage());
-			}
-		}
-
-		// Recolectar salidas y parsear
-		for (int i = 0; i < procesos.size(); i++) {
-			Process process = procesos.get(i);
-			try {
+				Process process = startChildProcess(javaBin, classpath, i);
 				String texto = readProcessOutput(process);
 				int exitVal = process.waitFor();
 				if (exitVal == 0) {
@@ -89,7 +79,7 @@ public class ServicioEmergencia {
 						System.out.println(RECIBIDO + bote.getNbote());
 					}
 				} else {
-					System.err.println(MSG_ERROR + PROCESO+ i + PARENTESIS);
+					System.err.println(MSG_ERROR + PROCESO + i + PARENTESIS);
 				}
 			} catch (IOException | InterruptedException e) {
 				System.err.println(ERROR_LEYENDO + i + DOS_PUNTOS + e.getMessage());

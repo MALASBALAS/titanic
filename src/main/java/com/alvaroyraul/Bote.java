@@ -15,8 +15,9 @@ public class Bote {
     private String nbote;
 
     // Lombok genera constructor y getters/setters
-    // Método para simular la carga de un único bote
-    public static Bote cargarBote(int i, int maxPersonas, int minSleep, int maxSleep, String nbotePrefix) {
+
+    // Método para simular la carga de un único bote (solo genera datos)
+    public static Bote cargarBote(int i, int maxPersonas, String nbotePrefix) {
         int numPersonas = (int) (Math.random() * maxPersonas) + 1;
         int mujeres = (int) (Math.random() * (numPersonas + 1));
         int hombres = (int) (Math.random() * (numPersonas - mujeres + 1));
@@ -24,18 +25,7 @@ public class Bote {
 
         String nbote = String.format(NBOTE, nbotePrefix, i);
 
-        // crear el objeto Botes con los datos generados
-        Bote bote = new Bote(numPersonas, mujeres, hombres, ninios, nbote);
-
-        // simular demora configurable
-        try {
-            int delay = (int) (Math.random() * (maxSleep - minSleep + 1)) + minSleep;
-            Thread.sleep(delay);
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-        }
-
-        return bote;
+        return new Bote(numPersonas, mujeres, hombres, ninios, nbote);
     }
 
     // se lo deberá comunicar al servicio de Emergencias.

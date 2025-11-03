@@ -2,8 +2,9 @@ package com.alvaroyraul;
 
 public class MainBote {
     // Constantes locales al proceso
-    public static final int MAXSLEEP = 6000;
-    public static final int MINSLEEP = 2000;
+    // defaults in milliseconds (2-6 seconds)
+    public static final int MAXSLEEP = 6000; // ms
+    public static final int MINSLEEP = 2000; // ms
     public static final int TOTALBOTES = 20;
     public static final int MAXPERSONAS = 100;
 
@@ -15,27 +16,43 @@ public class MainBote {
     public static final int CUATRO = 4;
 
     public static void main(String[] args) {
+        // Leer y validar argumentos: index [maxPersonas minSleep maxSleep nbotePrefix]
         int index = 0;
-    // Leer argumentos: index [maxPersonas minSleep maxSleep]
-        int maxPersonas = MainBote.MAXPERSONAS;
-        int minSleep = MainBote.MINSLEEP;
-        int maxSleep = MainBote.MAXSLEEP;
+        int maxPersonas = MAXPERSONAS;
+        int minSleep = MINSLEEP;
+        int maxSleep = MAXSLEEP;
+        String nbotePrefix = B;
+
         if (args.length > 0) {
             try { index = Integer.parseInt(args[0]); } catch (NumberFormatException e) { index = 0; }
         }
-        String nbotePrefix = B;
         if (args.length > 1) {
             try { maxPersonas = Integer.parseInt(args[1]); } catch (NumberFormatException e) { /* keep default */ }
         }
-        if (args.length > TRES) {
-            try { minSleep = Integer.parseInt(args[DOS]); maxSleep = Integer.parseInt(args[TRES]); } catch (NumberFormatException e) { /* keep default */ }
+        if (args.length > 2) {
+            try { minSleep = Integer.parseInt(args[2]); } catch (NumberFormatException e) { /* keep default */ }
         }
-        if (args.length > CUATRO) {
-            nbotePrefix = args[CUATRO];
+        if (args.length > 3) {
+            try { maxSleep = Integer.parseInt(args[3]); } catch (NumberFormatException e) { /* keep default */ }
+        }
+        if (args.length > 4) {
+            nbotePrefix = args[4];
         }
 
-    // Generar bote y emitir JSON
-        Bote bote = Bote.cargarBote(index, maxPersonas, minSleep, maxSleep, nbotePrefix);
+        if (maxSleep < minSleep) {
+            int tmp = minSleep; minSleep = maxSleep; maxSleep = tmp;
+        }
+
+        // Aplicar sleep aleatorio entre minSleep y maxSleep (ambos en ms)
+        int delay = minSleep + (int) (Math.random() * (maxSleep - minSleep + 1));
+        try {
+            Thread.sleep(delay); // e.g. Thread.sleep(2000); // demora 2 segundos
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+
+        // Generar bote y emitir JSON
+        Bote bote = Bote.cargarBote(index, maxPersonas, nbotePrefix);
         // Emitir JSON simple por stdout usando datos del Bote
         String json = String.format(JSON,
                 bote.getNbote(), bote.getPersonas(), bote.getMujeres(), bote.getHombres(), bote.getNinios());
