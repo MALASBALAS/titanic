@@ -5,6 +5,8 @@ import lombok.Data;
 
 @Data @AllArgsConstructor
 public class Bote {
+
+    public static final String NBOTE = "%s%02d";
     // Nota: constantes (TOTALBOTES, MAXPERSONAS, MINSLEEP, MAXSLEEP) se declaran en los mains
     private int personas;
     private int mujeres;
@@ -20,7 +22,7 @@ public class Bote {
         int hombres = (int) (Math.random() * (numPersonas - mujeres + 1));
         int ninios = numPersonas - mujeres - hombres;
 
-        String nbote = String.format("%s%02d", nbotePrefix, i);
+        String nbote = String.format(NBOTE, nbotePrefix, i);
 
         // crear el objeto Botes con los datos generados
         Bote bote = new Bote(numPersonas, mujeres, hombres, ninios, nbote);

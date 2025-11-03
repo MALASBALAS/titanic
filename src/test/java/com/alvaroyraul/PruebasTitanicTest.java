@@ -5,6 +5,7 @@ import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
@@ -36,5 +37,15 @@ public class PruebasTitanicTest {
         assertTrue(contenido.contains("- Total Salvados 5"));
         assertTrue(contenido.contains("## Total"));
         assertTrue(contenido.contains("- Total Salvados 15"));
+    }
+
+    @Test
+    public void testNumeroDeBotes() throws Exception {
+        // Ejecutar el servicio (usa los valores por defecto)
+        ServicioEmergencia.main(new String[]{});
+        File informe = new File("Informe.md");
+        String contenido = Files.readString(informe.toPath());
+        long count = contenido.lines().filter(l -> l.startsWith("## Bote")).count();
+        assertEquals(20, count, "El informe debería contener 20 botes");
     }
 }

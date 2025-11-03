@@ -1,0 +1,32 @@
+/target/
+*.log
+*.tmp
+.DS_Store
+/.idea/
+.classpath
+.project
+.settings/
+/.vscode/
+/.mvn/
+/.cache/
+
+# IntelliJ
+/*.iml
+
+# macOS
+._*
+
+# Maven
+dependency-reduced-pom.xml
+release.properties
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+
+# Generated reports
+target/surefire-reports/
+target/failsafe-reports/
+
+# Optional: excluir Informe.md de commits si prefieres que se regenere en CI
+# Informe.md
